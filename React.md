@@ -3,6 +3,9 @@
 1. Object Freeze
 2. Proxy the Object and throw error if set is called
 3. Immuntable.js
+4. Object.define property
+5. Object.seal
+6. private field
 
 # what happen when setState() is called
 
@@ -68,7 +71,7 @@ React Native -> JS Engine -> Brige -> OS
 
 In React Native, js code will be serialize (parse) into the OS language its required to run on native apps
 
-React is a library, it's allow yoy to do more than follow a fixed structure while React Native is a framework which force you to follow the structure
+React is a library, it's allow you to do more than follow a fixed structure while React Native is a framework which force you to follow the structure
 
 # Stale Closure when using React Hooks
 
@@ -111,3 +114,7 @@ Refer to a technique for sharing code between React components using a prop whos
 The Pattern is to create a **wrapper function** at the top level -> passing down the props as function use to render the state and wire it with function that use to modify the state.
 
 more depth: https://www.youtube.com/watch?v=3IdCQ7QAs38
+
+# Virtual DOM vs Real DOM
+
+compare works in RAM for Virtual DOM so it's faster than RealDOM

@@ -9,7 +9,9 @@ Third : Apply Clean Architect
 View: UI
 Controller: Logic Handling for Use case / Adapter: Framework like redux
 Usecase: Business Logic
-Entities: Like DTO
+Entities - Domain: Like DTO
+
+### Layers
 
 ### Pros
 
@@ -19,11 +21,19 @@ Entities: Like DTO
 
 ### Cons
 
--
+- Requires intentional design / can be overkill for small apps
+- Designing Clean Architect from the beginning is expensive and hard for ideas that need rapid development for the market
+- Time consuming to develop
+
+#### Not fit 
+
+- small apps / disposal app
+- fixed requirements
+- 
 
 ### Dependency Rules
 
--
+- Arrow always points in 1 direction
 -
 
 ### Usecase vs Entites:

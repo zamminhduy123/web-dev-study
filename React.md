@@ -118,3 +118,11 @@ more depth: https://www.youtube.com/watch?v=3IdCQ7QAs38
 # Virtual DOM vs Real DOM
 
 compare works in RAM for Virtual DOM so it's faster than RealDOM
+
+# HashRouter vs BrowserRouter
+
+**BrowserRouter** uses history API, i.e. it's unavailable for legacy browsers (IE 9 and lower and contemporaries). Client-side React application is **able to maintain clean routes** like example.com/react/route but needs to be **backed by web server**.
+
+**HashRouter** uses URL hash, it puts no limitations on supported browsers or web server. **Server-side routing is independent from client-side routing**.
+
+Backward-compatible single-page application can use it as example.com/#/react/route.

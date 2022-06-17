@@ -29,7 +29,7 @@ mix parallel + concurrent -> better
 
 Object contains raw data (Binary)
 
-- **stream**
+- **stream**: handle big file data
 
 ## File
 

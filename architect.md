@@ -25,11 +25,11 @@ Entities - Domain: Like DTO
 - Designing Clean Architect from the beginning is expensive and hard for ideas that need rapid development for the market
 - Time consuming to develop
 
-#### Not fit 
+#### Not fit
 
 - small apps / disposal app
 - fixed requirements
-- 
+-
 
 ### Dependency Rules
 
@@ -42,3 +42,19 @@ Entities - Domain: Like DTO
 -
 
 # Design Pattern
+
+# Storage Layer architect
+
+usually 3 layer
+
+1. CRUD class - strategy ( app schema )
+
+2. DB layer - request priority ( read(concurrent) - write(serialize) ) - usecase
+
+- config
+- application
+- query / define which query in which transaction
+
+3. ultimate query (input -> output) adapter
+   - create query
+   - receive objet and gen query

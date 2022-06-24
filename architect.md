@@ -55,6 +55,6 @@ usually 3 layer
 - application
 - query / define which query in which transaction
 
-3. ultimate query (input -> output) adapter
+3. ultimate query ( -> output) adapter
    - create query
    - receive objet and gen query

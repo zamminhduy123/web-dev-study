@@ -19,3 +19,15 @@ local save last ID -> request to server from that ID + 1 then update to local DB
 authen with Socket establish
 
 set cookie with origin socket so it comes along with cookie to authen
+
+# SSL vs TLS
+
+Authenticate Server & Client and Encrypt data
+
+## SSL - Secure Socket Layer
+
+Server will send a small SSL Cert - cert that used to identify trust end point
+
+## TLS - Transport Layer Security - Latest one
+
+![alt tls layer](./images/TLS.PNG)

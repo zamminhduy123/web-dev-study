@@ -17,3 +17,10 @@ An Exception is thrown when you access an XMLHttpRequest response before it is c
 A closure resembles more a **snapshot 📸 of the scope's data** when the function is created.
 
 This means that there's a risk of accessing **outdated data** given the right circumstances.
+
+# Event Propagation
+
+Event will fire at the lowest place then start travel to higher place (parent element) to stop you can use **e.stopPropagation()**
+
+if you want to still notice about event u can use eventName**Capture** to capture it
+![](./images/Capture.PNG)

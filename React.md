@@ -126,3 +126,59 @@ compare works in RAM for Virtual DOM so it's faster than RealDOM
 **HashRouter** uses URL hash, it puts no limitations on supported browsers or web server. **Server-side routing is independent from client-side routing**.
 
 Backward-compatible single-page application can use it as example.com/#/react/route.
+
+# Fetching on "mount" pitfalls
+
+- **Effects don’t run on the server**. This means that the initial server-rendered HTML will only include a loading state with no data. The client computer will have to download all JavaScript and render your app only to discover that now it needs to load the data. This is not very efficient.
+- **Fetching directly in Effects makes it easy to create “network waterfalls”**. You render the parent component, it fetches some data, renders the child components, and then they start fetching their data. If the network is not very fast, this is significantly slower than fetching all data in parallel.
+- **Fetching directly in Effects usually means you don’t preload or cache data**. For example, if the component unmounts and then mounts again, it would have to fetch the data again.
+- **It’s not very ergonomic**. There’s quite a bit of boilerplate code involved when writing fetch calls in a way that doesn’t suffer from bugs like race conditions.
+
+# Not an Effect: Initializing the application
+
+Some logic should only run once when the application starts. You can put it outside your components
+
+![](./images/not_an_effect.PNG)
+
+> React will call your cleanup function before the Effect runs next time, and during the unmount.
+
+## Effect Run
+
+When you update your component’s state, React will first call your component functions to calculate what should be on the screen. Then React will “commit” these changes to the DOM, updating the screen. Then React will run your Effects.
+
+### If your Effect also immediately updates the state, this restarts the whole process from scratch!
+
+# useSyncExternalSource
+
+![](./images/useSyncExternalSource.PNG)
+
+# Reduce Effects
+
+- **Updating state based on props or state**
+- **Caching expensive calculations**
+  ![](./images/useMemo.PNG)
+- **Resetting all state when a prop changes**
+  Avoid resetting state in useEffect with dependency of props, we can use **key** instead
+- **Adjusting some state when a prop changes**
+  Better: Adjust the state while rendering
+
+  > When you update a component during rendering, React throws away the returned JSX and immediately retries rendering.
+  > **Always check whether you can reset all state with a key or calculate everything during rendering instead.**
+  > For example, instead of storing (and resetting) the selected item, you can store the selected item ID
+
+**Use Effects only for code that should run because the component was displayed to the user.**
+
+- **Subscribing to an external store**
+- **Passing data to the parent**
+
+# 18 Batch Update
+
+Using a queue to chain set state then update after a whole function is complete
+
+# How useState know which state to return
+
+Hooks rely on a **stable call order** on every render of the same component
+
+> So we can't use hook inside function or if/else
+
+React holds an array of state pairs for every component. It also maintains the current pair index, which is set to 0 before rendering

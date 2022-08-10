@@ -46,6 +46,10 @@ Use:
 
 To ensure data won't be missing
 
+### TCP/IP
+
+![](./images/TCPIP-model.PNG)
+
 ## UDP - User Datagram Protocol
 
 Live/real-time
@@ -65,7 +69,8 @@ a socket has 2 part : IP address and Port number
 
 Ex: 127.0.0.1:3000
 
-> 80 is a standard port number
+> 80 is a standard port number | 443 is strong security
+> Port-443 allows data transmission over a secured network, while Port 80 enables data transmission in plain text.
 
 When client make request, they get an asigned port number -> **Ephermeral Port**
 
@@ -117,6 +122,8 @@ Each fragments will have an encode key 32bit
 ![](./images/SocketBits.PNG)
 
 ### Htttp Streaming
+
+Developed by Apple 2009
 
 Server can send back multiple response after 1 client request
 

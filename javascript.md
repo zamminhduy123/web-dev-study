@@ -24,3 +24,32 @@ Event will fire at the lowest place then start travel to higher place (parent el
 
 if you want to still notice about event u can use eventName**Capture** to capture it
 ![](./images/Capture.PNG)
+
+# No such thing as NESTED OBJECT
+
+They're all object seperately pointing at each other
+
+            let obj1 = {
+            title: 'Blue Nana',
+            city: 'Hamburg',
+            image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+            };
+
+            let obj2 = {
+            name: 'Niki de Saint Phalle',
+            artwork: obj1
+            };
+
+            let obj3 = {
+            name: 'Copycat',
+            artwork: obj1
+            };
+
+# Pitfall
+
+Unfortunately, **slice** and **splice** are named similarly but are very different:
+
+- slice lets you copy an array or a part of it.
+- splice mutates the array (to insert or delete items).
+
+In React, you will be using slice (no p!) a lot more often because you don’t want to mutate objects or arrays in state. Updating Objects explains what mutation is and why it’s not recommended for state.

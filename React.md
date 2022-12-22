@@ -182,3 +182,56 @@ Hooks rely on a **stable call order** on every render of the same component
 > So we can't use hook inside function or if/else
 
 React holds an array of state pairs for every component. It also maintains the current pair index, which is set to 0 before rendering
+
+> State is tied to a position in the tree
+
+# Why state mutation is not recommended
+
+- Debugging: past logs won't get colbbered by the more recent state changes
+- Optimization: Common React optimization strategies rely on skipping work if previous props or state are the same as the next ones. If you never mutate state, it is very fast to check whether there were any changes. If prevObj === obj, you can be sure that nothing could have changed inside of it.
+- New Features: If you’re mutating past versions of state, that may prevent you from using the new features.
+- Requirement Changes: Some application features, like implementing Undo/Redo, showing a history of changes
+- Simpler Implementation
+
+# Immer to the rescuse for state mutate
+
+Immer provide a Proxy object that **"record"** what you do to the object then produces a completely new object that contains your edits
+
+# Controlled vs Uncontrolled Component
+
+In contrast, you might say a component is **“controlled”** when the important information in it is driven by props rather than its own local state. This lets the parent component fully specify its behavior.
+
+# AbortController
+
+To abort a fetch call
+
+    const abCtrl = new AbortController();
+
+pass signal object to fetch, if abort is trigger -> fetch.catch will be called
+
+# How to use hooks with good old class component
+
+Imagine going to a big old project that running smoothly since react released. There would be bunch of **class-based** component type of code. But what if you invent a hooks that trigger re-render when data change for your new component, then now you want that data change to trigger the old component to re-render as well. What will you do ??
+
+> Introducing: withHooks
+
+        export function withHooks<OwnProps extends {}, ConnectedProps extends {}>(
+            comp: React.ComponentType<OwnProps & ConnectedProps>,
+            mapHookToProp: MapHook<OwnProps, ConnectedProps>
+        ) {
+            const Comp = comp;
+
+            let Composed: React.FC<OwnProps> = function (props: OwnProps) {
+                const connectedProps = mapHookToProp(props);
+
+                return <Comp {...props} {...connectedProps} />;
+            };
+
+            if (__DEV__) {
+                Composed.displayName = `${getDisplayName(Comp)}WithHooks`;
+            }
+
+            return Composed;
+        }
+
+this is an HOC component to wrap around you old fashion component and allow you to connect your **custom hooks** 

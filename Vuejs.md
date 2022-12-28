@@ -21,6 +21,11 @@ Cuz i started as a react dev so compare with it would be ezier
 - useEffect[] || componentDidMount      : onMounted
 - React Portal                          : Teleport
 
+
+# Important Note
+
+- By default, **watchers** will run just prior to component rendering. Setting flush: 'post' will defer the watcher until after component rendering. 
+
 # v-
 
 To bind an attribute to a dynamic value, we use the **v-bind** directive can be shorthanded as **:id**

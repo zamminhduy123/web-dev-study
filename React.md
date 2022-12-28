@@ -235,3 +235,10 @@ Imagine going to a big old project that running smoothly since react released. T
         }
 
 this is an HOC component to wrap around you old fashion component and allow you to connect your **custom hooks** 
+
+## && operand
+
+🔴 BAD
+        condition && <ConditionalComponent />
+🟢 GOOD
+        condition ? <ConditionalComponent /> : null

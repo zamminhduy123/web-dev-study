@@ -55,3 +55,4 @@ remember to put in the declaration for each enum
 
 - `Partials<Interface>`: Makes every thing in interface have ? (which means could be `undefined`)
 - `Omit<Interface, "property">`: Remove that property out of **Interface**
+- `Exclude<Interface, "union-type">`: Remove a union type from interface (use this for union type and omit for object exclude property)

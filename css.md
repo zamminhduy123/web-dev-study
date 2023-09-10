@@ -11,3 +11,13 @@
 # Trick
 
 - We can use check box and style it as a button so we can access check or uncheck property in CSS
+
+# Common mistakes
+
+1. use `width: 100%` on block elemnt like (p, div, main, header, ...). Cause the element is already taking up all space
+> Sometime it can cause issues if there's margin  
+> Don't declare thing unless u **actually need** them
+
+2. `display: flex;` every where
+
+3. 
